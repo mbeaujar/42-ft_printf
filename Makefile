@@ -6,7 +6,7 @@
 #    By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/18 18:33:42 by mbeaujar          #+#    #+#              #
-#    Updated: 2020/09/18 19:05:17 by mbeaujar         ###   ########.fr        #
+#    Updated: 2020/09/18 19:09:48 by mbeaujar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,7 @@ NAME = libftprintf.a
 
 CC = gcc 
 
-CFLAGS = -c -Wall -Wextra -Werror
-
+CFLAGS = -Wall -Wextra -Werror
 
 SRCS = ft_printf.c \
        ft_count_len.c \
@@ -33,10 +32,11 @@ OBJS = ${SRCS:.c=.o}
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(SCRS)
-	ar rcs $(NAME) $(OBJS) 
+.c.o: 
+		$(CC) $(CFLAGS) -g -c $< -o ${<:.c=.o}
 
+$(NAME) : $(OBJS)
+	ar rcs $(NAME) $(OBJS) 
 
 clean : 
 	rm -f $(OBJS) 
