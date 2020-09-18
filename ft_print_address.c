@@ -6,13 +6,13 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 16:22:28 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 18:24:00 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/18 18:56:52 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_print_adress_dot(unsigned long nbr, t_flags flags)
+int ft_print_address_dot(unsigned long nbr, t_flags flags)
 {
 	int print;
 
@@ -41,11 +41,11 @@ int ft_print_address(unsigned long nbr, t_flags flags)
 
 	print = 0;
 	if (flags.dot == 0 && nbr == 0)
-		return (ft_print_adress_zero(flags));
+		return (ft_print_address_zero(flags));
 	if (flags.dot >= 0 && (flags.dot < ft_len_mem(nbr)))
 		flags.dot = ft_len_mem(nbr);
 	if (flags.less == 1)
-		print += ft_print_adress_dot(nbr, flags);
+		print += ft_print_address_dot(nbr, flags);
 	if (flags.zero == '0' && flags.dot == -1)
 		flags.dot = flags.width;
 	print += ft_print(flags.width, (flags.dot + 2), ' ');

@@ -6,7 +6,7 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 21:33:50 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 18:31:07 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/18 18:53:56 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int ft_select_type(const char *s, int *i, va_list args)
 	else
 		print = ft_print_no_type(s[*i], flags);
 	if (s[*i])
-		*i++;
+		(*i)++;
 	return (print);
 }
 
@@ -54,12 +54,13 @@ int ft_printf(const char *format, ...)
 	va_start(args, format);
 	i = 0;
 	print = 0;
-	while (format[i++])
+	while (format[i])
 	{
 		if (format[i])
-			print += ft_select_type(format, ++i, args);
+			print += ft_select_type(format, (&i + 1), args);
 		else
 			print += ft_printchar(format[i]);
+		i++;
 	}
 	va_end(args);
 	return (print);

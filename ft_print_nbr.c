@@ -6,7 +6,7 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 23:18:04 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 15:53:18 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/18 18:59:47 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ unsigned int ft_treat_nbr(long long nb, int *print, t_flags *flags, int *sign)
 
 	if (nb < 0 && (flags->dot >= 0 || flags->zero == 1))
 	{
-		sign = 1;
+		*sign = 1;
 		if (flags->zero == 1 && flags->dot == -1)
 		{
 			ft_printchar('-');
-			sign = 0;
+			*sign = 0;
 		}
 		nbr = -nb;
 		flags->zero = 1;
 		flags->width--;
-		*print++;
+		(*print)++;
 	}
 	else
 		nbr = nb;

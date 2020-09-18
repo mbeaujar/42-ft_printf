@@ -6,7 +6,7 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 15:19:42 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 16:38:06 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/18 19:01:01 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int ft_printhex(unsigned int nb, char value)
 	}
 	print = i;
 	while (--i >= 0)
-		ft_printchar(hex[s[i]]);
+		ft_printchar(hex[s[i] + 48]);
 	return (print);
 }
 
@@ -74,6 +74,6 @@ int	ft_printaddr(unsigned long addr_l)
 	}
 	print = i;
 	while (--i >= 0)
-		ft_putchar_fd(aff[i], 1);
+		ft_printchar(aff[i]);
 	return (print);
 }

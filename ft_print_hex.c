@@ -6,7 +6,7 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 15:32:29 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 15:57:19 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/18 18:58:37 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int ft_print_hex_width(unsigned int nbr, t_flags flags, char value)
 	return (print);
 }
 
-int ft_print_hex(unsigned int nbr, t_flags flags, char value);
+int ft_print_hex(unsigned int nbr, t_flags flags, char value)
 {
 	int print;
 

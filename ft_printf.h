@@ -6,7 +6,7 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 21:34:36 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 18:30:51 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/18 18:58:20 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void ft_flags_digit(const char *s, int *i, t_flags *flags);
 ** ft_print_percent.c 
 */
 
-int ft_printstr(char *str);
 int ft_print(int start, int end, char c);
 int ft_print_percent(t_flags flags);
 
@@ -78,6 +77,7 @@ int ft_print_nbr(long long nb, t_flags flags);
 
 int ft_len_nbr(unsigned int nbr);
 int ft_len_hex(unsigned int nbr);
+int ft_len_mem(unsigned long nbr);
 
 /*
 ** ft_print_put.c
@@ -86,6 +86,7 @@ int ft_len_hex(unsigned int nbr);
 int ft_strlen(char *str);
 int ft_printstr(char *str, int max);
 int ft_printhex(unsigned int nb, char value);
+int ft_printaddr(unsigned long addr_l);
 
 /*
 ** ft_print_hex.c
@@ -106,8 +107,14 @@ int ft_print_no_type(char c, t_flags flags);
 ** ft_print_address.c
 */
 
-int ft_print_adress_dot(unsigned long nbr, t_flags flags);
-int ft_print_adress_zero(t_flags flags);
-int ft_print_adress(unsigned long nbr, t_flags flags);
+int ft_print_address_dot(unsigned long nbr, t_flags flags);
+int ft_print_address_zero(t_flags flags);
+int ft_print_address(unsigned long nbr, t_flags flags);
+
+/*
+** ft_print_string.c
+*/
+
+int ft_print_string(char *s, t_flags flags);
 
 #endif
