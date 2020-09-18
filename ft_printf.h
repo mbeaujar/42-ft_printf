@@ -6,7 +6,7 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 21:34:36 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 00:37:03 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/18 18:30:51 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,36 @@ int ft_print_nbr(long long nb, t_flags flags);
 
 int ft_len_nbr(unsigned int nbr);
 int ft_len_hex(unsigned int nbr);
+
+/*
+** ft_print_put.c
+*/
+
+int ft_strlen(char *str);
+int ft_printstr(char *str, int max);
+int ft_printhex(unsigned int nb, char value);
+
+/*
+** ft_print_hex.c
+*/
+
+int ft_print_hex_dot(unsigned int nbr, t_flags flags, char value);
+int ft_print_hex_width(unsigned int nbr, t_flags flags, char value);
+int ft_print_hex(unsigned int nbr, t_flags flags, char value);
+
+/*
+** ft_print_char.c
+*/
+
+int ft_print_char(char c, t_flags flags);
+int ft_print_no_type(char c, t_flags flags);
+
+/*
+** ft_print_address.c
+*/
+
+int ft_print_adress_dot(unsigned long nbr, t_flags flags);
+int ft_print_adress_zero(t_flags flags);
+int ft_print_adress(unsigned long nbr, t_flags flags);
 
 #endif

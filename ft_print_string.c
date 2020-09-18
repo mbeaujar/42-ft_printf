@@ -1,52 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_len.c                                     :+:      :+:    :+:   */
+/*   ft_print_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/18 00:33:17 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 16:37:36 by mbeaujar         ###   ########.fr       */
+/*   Created: 2020/09/18 15:26:14 by mbeaujar          #+#    #+#             */
+/*   Updated: 2020/09/18 16:19:35 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_len_nbr(unsigned int nbr)
+int ft_print_string(char *s, t_flags flags)
 {
-	int i;
+	int print;
 
-	i = 0;
-	while (nbr)
-	{
-		nbr /= 10;
-		i++;
-	}
-	return (i);
-}
-
-int ft_len_hex(unsigned int nbr)
-{
-	int i;
-
-	i = 0;
-	while (nbr)
-	{
-		nbr /= 16;
-		i++;
-	}
-	return (i);
-}
-
-int ft_len_mem(unsigned long nbr)
-{
-	int i;
-
-	i = 0;
-	while (nbr)
-	{
-		nbr /= 16;
-		i++;
-	}
-	return (i);
+	print = 0;
+	if (flags.dot >= 0 && (flags.dot > ft_strlen(s)))
+		flags.dot = ft_strlen(s);
+	if (flags.less == 1)
+		print += ft_printstr(s, flags.dot);
+	if (flags.dot >= 0)
+		print += ft_print(flags.width, flags.dot, flags.zero);
+	else
+		print += ft_printf(flags.width, ft_strlen(s), flags.zero);
+	if (flags.less == 0)
+		print += ft_printstr(s, flags.dot);
+	return (print);
 }

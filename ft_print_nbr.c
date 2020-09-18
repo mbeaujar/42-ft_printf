@@ -6,7 +6,7 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 23:18:04 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 00:34:17 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/18 15:53:18 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,13 @@ int ft_printnbr(unsigned int nbr)
 	i = 0;
 	while (nbr)
 	{
-		s[i++] = (nbr % 10) - '0';
+		s[i] = (nbr % 10) - '0';
 		nbr /= 10;
+		i++;
 	}
 	print = i;
-	while (i)
-		ft_printchar(s[i--]);
+	while (--i >= 0)
+		ft_printchar(s[i]);
 	return (print);
 }
 
@@ -93,7 +94,7 @@ int ft_print_nbr(long long nb, t_flags flags)
 	print = 0;
 	sign = 0;
 	if (flags.dot == 0 &&  nb == 0)
-		return (ft_print(flags.width, 0, 0));
+		return (ft_print(flags.width, 0, ' '));
 	nbr = ft_treat_nbr(nb, &print, &flags, &sign);
 	print = ft_print_nbr_width(nbr, flags, sign);
 	return (print);

@@ -6,7 +6,7 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 21:33:50 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/17 23:10:41 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/18 18:31:07 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@ int ft_select_type(const char *s, int *i, va_list args)
 
 	ft_set_flags(s, i, &flags, args);
 	if (s[*i] == 'c')
-		print = ft_print_char();
+		print = ft_print_char(va_arg(args, int), flags);
 	else if (s[*i] == 's')
-		print = ft_print_string();
+		print = ft_print_string(va_arg(args, char*), flags);
 	else if (s[*i] == 'p')
-		print = ft_print_address();
+		print = ft_print_address(va_arg(args, unsigned long), flags);
 	else if(s[*i] == 'd' || s[*i] == 'i')
-		print = ft_print_nbr();
+		print = ft_print_nbr(va_arg(args, int), flags);
 	else if(s[*i] == 'u')
-		print = ft_print_nbr();
+		print = ft_print_nbr(va_arg(args, unsigned int), flags);
 	else if (s[*i] == 'x' || s[*i] == 'X')
-		print = ft_print_hex();
+		print = ft_print_hex(va_arg(args, unsigned int), flags, s[*i]);
 	else if (s[*i] == '%')
 		print = ft_print_percent(flags);
 	else
-		print = ft_print_no_type();
+		print = ft_print_no_type(s[*i], flags);
 	if (s[*i])
 		*i++;
 	return (print);
