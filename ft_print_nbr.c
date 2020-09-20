@@ -6,7 +6,7 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 23:18:04 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/20 22:39:43 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/20 22:58:50 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int				ft_print_nbr(long long nb, t_flags flags)
 	sign = 0;
 	if (flags.dot == 0 && nb == 0)
 		return (ft_print(flags.width, 0, ' '));
-	nbr = ft_treat_nbr(nb, &print, &flags, &sign);
+	nbr = ft_sig_nbr(nb, &print, &flags, &sign);
 	print += ft_print_nbr_width(nbr, flags, sign);
 	return (print);
 }
