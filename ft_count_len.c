@@ -6,13 +6,13 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 00:33:17 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/19 16:15:41 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/20 22:22:23 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_len_nbr(unsigned int nbr)
+int	ft_len_nbr(unsigned int nbr)
 {
 	int i;
 
@@ -27,7 +27,7 @@ int ft_len_nbr(unsigned int nbr)
 	return (i);
 }
 
-int ft_len_hex(unsigned int nbr)
+int	ft_len_hex(unsigned int nbr)
 {
 	int i;
 
@@ -42,7 +42,7 @@ int ft_len_hex(unsigned int nbr)
 	return (i);
 }
 
-int ft_len_mem(unsigned long nbr)
+int	ft_len_mem(unsigned long nbr)
 {
 	int i;
 

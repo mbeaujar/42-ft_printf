@@ -6,13 +6,13 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 15:18:58 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 19:51:40 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/20 22:21:26 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_print_char(char c, t_flags flags)
+int	ft_print_char(char c, t_flags flags)
 {
 	int print;
 
@@ -25,7 +25,7 @@ int ft_print_char(char c, t_flags flags)
 	return (print);
 }
 
-int ft_print_no_type(char c, t_flags flags)
+int	ft_print_no_type(char c, t_flags flags)
 {
 	int print;
 

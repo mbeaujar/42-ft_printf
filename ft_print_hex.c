@@ -6,13 +6,13 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 15:32:29 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 21:26:48 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/20 22:15:48 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_print_hex_dot(unsigned int nbr, t_flags flags, char value)
+int	ft_print_hex_dot(unsigned int nbr, t_flags flags, char value)
 {
 	int print;
 
@@ -23,7 +23,7 @@ int ft_print_hex_dot(unsigned int nbr, t_flags flags, char value)
 	return (print);
 }
 
-int ft_print_hex_width(unsigned int nbr, t_flags flags, char value)
+int	ft_print_hex_width(unsigned int nbr, t_flags flags, char value)
 {
 	int print;
 
@@ -41,7 +41,7 @@ int ft_print_hex_width(unsigned int nbr, t_flags flags, char value)
 	return (print);
 }
 
-int ft_print_hex(unsigned int nbr, t_flags flags, char value)
+int	ft_print_hex(unsigned int nbr, t_flags flags, char value)
 {
 	int print;
 

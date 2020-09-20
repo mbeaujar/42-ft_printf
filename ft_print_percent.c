@@ -6,13 +6,13 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:53:05 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 19:48:43 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/20 22:31:04 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_print(int start, int end, char c)
+int	ft_print(int start, int end, char c)
 {
 	int print;
 
@@ -26,8 +26,7 @@ int ft_print(int start, int end, char c)
 	return (print);
 }
 
-
-int ft_print_percent(t_flags flags)
+int	ft_print_percent(t_flags flags)
 {
 	int print;
 

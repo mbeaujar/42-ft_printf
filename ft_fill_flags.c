@@ -6,19 +6,19 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 21:59:38 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/20 18:05:48 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/20 22:22:08 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_flags_less(t_flags *flags)
+void	ft_flags_less(t_flags *flags)
 {
 	flags->zero = ' ';
 	flags->less = 1;
 }
 
-void ft_flags_dot(const char *s, int *i, t_flags *flags, va_list args)
+void	ft_flags_dot(const char *s, int *i, t_flags *flags, va_list args)
 {
 	(*i)++;
 	if (s[*i] == '*')
@@ -35,7 +35,7 @@ void ft_flags_dot(const char *s, int *i, t_flags *flags, va_list args)
 	(*i)--;
 }
 
-void ft_flags_width(t_flags *flags, va_list args)
+void	ft_flags_width(t_flags *flags, va_list args)
 {
 	flags->star = 1;
 	flags->width = va_arg(args, int);
@@ -47,7 +47,7 @@ void ft_flags_width(t_flags *flags, va_list args)
 	}
 }
 
-void ft_flags_digit(const char *s, int *i, t_flags *flags)
+void	ft_flags_digit(const char *s, int *i, t_flags *flags)
 {
 	if (flags->star == 1)
 		flags->width = 0;

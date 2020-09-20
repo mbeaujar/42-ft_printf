@@ -6,23 +6,23 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 23:18:04 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/20 18:06:56 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/20 22:39:43 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned int ft_treat_nbr(long long nb, int *print, t_flags *flags, int *sign)
+unsigned int	ft_sig_nbr(long long nb, int *print, t_flags *flags, int *sign)
 {
 	unsigned int nbr;
 
-	if (nb < 0 /*&& (flags->dot >= 0 || flags->zero == '0')*/)
+	if (nb < 0)
 	{
-		*sign = 1;
-		if (flags->zero == '0' && flags->dot == -1)
+		(*sign) = 1;
+		if (flags->zero == '0' && flags->dot <= -1)
 		{
 			ft_printchar('-');
-			*sign = 0;
+			(*sign) = 0;
 		}
 		nbr = -nb;
 		flags->width--;
@@ -33,19 +33,7 @@ unsigned int ft_treat_nbr(long long nb, int *print, t_flags *flags, int *sign)
 	return (nbr);
 }
 
-
-void ft_putnbr(unsigned int nbr)
-{
-	if (nbr >= 10)
-	{
-		ft_putnbr(nbr / 10);
-		ft_putnbr(nbr % 10);
-	}
-	else
-		ft_printchar(nbr + '0');
-}
-
-int ft_printnbr(unsigned int nbr)
+int				ft_printnbr(unsigned int nbr)
 {
 	int print;
 
@@ -54,8 +42,7 @@ int ft_printnbr(unsigned int nbr)
 	return (print);
 }
 
-
-int ft_print_nbr_dot(unsigned int nbr, t_flags flags, int sign)
+int				ft_print_nbr_dot(unsigned int nbr, t_flags flags, int sign)
 {
 	int print;
 
@@ -68,7 +55,7 @@ int ft_print_nbr_dot(unsigned int nbr, t_flags flags, int sign)
 	return (print);
 }
 
-int ft_print_nbr_width(unsigned int nbr, t_flags flags, int sign)
+int				ft_print_nbr_width(unsigned int nbr, t_flags flags, int sign)
 {
 	int print;
 
@@ -86,15 +73,15 @@ int ft_print_nbr_width(unsigned int nbr, t_flags flags, int sign)
 	return (print);
 }
 
-int ft_print_nbr(long long nb, t_flags flags)
+int				ft_print_nbr(long long nb, t_flags flags)
 {
-	unsigned int nbr;
-	int print;
-	int sign;
+	unsigned int	nbr;
+	int				print;
+	int				sign;
 
 	print = 0;
 	sign = 0;
-	if (flags.dot == 0 &&  nb == 0)
+	if (flags.dot == 0 && nb == 0)
 		return (ft_print(flags.width, 0, ' '));
 	nbr = ft_treat_nbr(nb, &print, &flags, &sign);
 	print += ft_print_nbr_width(nbr, flags, sign);

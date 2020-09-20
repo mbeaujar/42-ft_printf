@@ -6,13 +6,13 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 21:46:16 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/20 17:42:13 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/20 22:15:24 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_flags ft_init_flags(void)
+t_flags		ft_init_flags(void)
 {
 	t_flags flags;
 
@@ -24,7 +24,7 @@ t_flags ft_init_flags(void)
 	return (flags);
 }
 
-int ft_is_type(const char c)
+int			ft_is_type(const char c)
 {
 	if (c == 'c' || c == 's' || c == 'd' || c == 'i' || c == 'p')
 		return (1);
@@ -33,14 +33,14 @@ int ft_is_type(const char c)
 	return (0);
 }
 
-int ft_is_digit(const char c)
+int			ft_is_digit(const char c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
 
-int ft_is_flags(const char c)
+int			ft_is_flags(const char c)
 {
 	if (c == '*' || c == ' ' || c == '.' || c == '-' || c == '0')
 		return (1);
@@ -49,11 +49,8 @@ int ft_is_flags(const char c)
 	return (0);
 }
 
-
-
-void ft_set_flags(const char *s, int *i, t_flags *flags, va_list args)
+void		ft_set_flags(const char *s, int *i, t_flags *flags, va_list args)
 {
-
 	*flags = ft_init_flags();
 	while (s[*i] && ft_is_flags(s[*i]))
 	{
@@ -71,5 +68,3 @@ void ft_set_flags(const char *s, int *i, t_flags *flags, va_list args)
 			(*i)++;
 	}
 }
-
-

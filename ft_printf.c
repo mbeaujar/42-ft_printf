@@ -6,22 +6,22 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 21:33:50 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/20 18:07:15 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/20 22:23:35 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printchar(int c)
+int	ft_printchar(int c)
 {
 	write(1, &c, 1);
 	return (1);
 }
 
-int ft_select_type(const char *s, int *i, va_list args)
+int	ft_select_type(const char *s, int *i, va_list args)
 {
-	t_flags flags;
-	int print;
+	t_flags	flags;
+	int		print;
 
 	ft_set_flags(s, i, &flags, args);
 	if (s[*i] == 'c')
@@ -30,9 +30,9 @@ int ft_select_type(const char *s, int *i, va_list args)
 		print = ft_print_string(va_arg(args, char*), flags);
 	else if (s[*i] == 'p')
 		print = ft_print_address(va_arg(args, unsigned long), flags);
-	else if(s[*i] == 'd' || s[*i] == 'i')
+	else if (s[*i] == 'd' || s[*i] == 'i')
 		print = ft_print_nbr(va_arg(args, int), flags);
-	else if(s[*i] == 'u')
+	else if (s[*i] == 'u')
 		print = ft_print_nbr(va_arg(args, unsigned int), flags);
 	else if (s[*i] == 'x' || s[*i] == 'X')
 		print = ft_print_hex(va_arg(args, unsigned int), flags, s[*i]);
@@ -43,11 +43,11 @@ int ft_select_type(const char *s, int *i, va_list args)
 	return (print);
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	int print;
-	int i;
-	va_list args;
+	int		print;
+	int		i;
+	va_list	args;
 
 	va_start(args, format);
 	i = 0;
@@ -63,15 +63,9 @@ int ft_printf(const char *format, ...)
 		{
 			print += ft_printchar(format[i]);
 		}
-		i++;
+		if (format[i])
+			i++;
 	}
 	va_end(args);
 	return (print);
 }
-
-int main(void)
-{
-	printf("\nreturn :%d\n", ft_printf("%.*i", -6, -3));
-	return (0);
-}
-

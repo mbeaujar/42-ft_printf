@@ -6,13 +6,13 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 15:19:42 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/19 20:11:59 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/20 22:33:45 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_strlen(char *str)
+int		ft_strlen(char *str)
 {
 	int i;
 
@@ -22,7 +22,7 @@ int ft_strlen(char *str)
 	return (i);
 }
 
-int ft_printstr(char *str, int max)
+int		ft_printstr(char *str, int max)
 {
 	int i;
 
@@ -32,11 +32,11 @@ int ft_printstr(char *str, int max)
 	return (i);
 }
 
-int ft_printhex(unsigned int nb, char value)
+int		ft_printhex(unsigned int nb, char value)
 {
-	char s[8];
-	int i;
-	int print;
+	char	s[8];
+	int		i;
+	int		print;
 
 	i = 0;
 	if (nb == 0)
@@ -61,11 +61,11 @@ int ft_printhex(unsigned int nb, char value)
 	return (print);
 }
 
-int	ft_printaddr(unsigned long addr_l)
+int		ft_printaddr(unsigned long addr_l)
 {
-	char				aff[20];
-	int					i;
-	int print;
+	char	aff[20];
+	int		i;
+	int		print;
 
 	i = 0;
 	if (addr_l == 0)
@@ -83,4 +83,15 @@ int	ft_printaddr(unsigned long addr_l)
 	while (--i >= 0)
 		ft_printchar(aff[i]);
 	return (print);
+}
+
+void	ft_putnbr(unsigned int nbr)
+{
+	if (nbr >= 10)
+	{
+		ft_putnbr(nbr / 10);
+		ft_putnbr(nbr % 10);
+	}
+	else
+		ft_printchar(nbr + '0');
 }
