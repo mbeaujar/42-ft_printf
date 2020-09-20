@@ -6,7 +6,7 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 21:59:38 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 18:55:04 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/20 18:05:48 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,19 @@ void ft_flags_less(t_flags *flags)
 
 void ft_flags_dot(const char *s, int *i, t_flags *flags, va_list args)
 {
+	(*i)++;
 	if (s[*i] == '*')
+	{
 		flags->dot = va_arg(args, int);
+		(*i)++;
+	}
 	else
 	{
 		flags->dot = 0;
-		while (ft_is_digit(s[*i]))
-			flags->dot = (flags->dot * 10) + (s[*i++] - '0');
+		while (s[*i] >= '0' && s[*i] <= '9')
+			flags->dot = flags->dot * 10 + (s[(*i)++] - '0');
 	}
+	(*i)--;
 }
 
 void ft_flags_width(t_flags *flags, va_list args)
@@ -38,6 +43,7 @@ void ft_flags_width(t_flags *flags, va_list args)
 	{
 		flags->less = 1;
 		flags->width *= -1;
+		flags->zero = ' ';
 	}
 }
 
@@ -45,6 +51,7 @@ void ft_flags_digit(const char *s, int *i, t_flags *flags)
 {
 	if (flags->star == 1)
 		flags->width = 0;
-	while (ft_is_digit(s[*i]))
-		flags->width = (flags->width * 10) + (s[*i++] - '0');
+	while (s[*i] >= '0' && s[*i] <= '9')
+		flags->width = flags->width * 10 + (s[(*i)++] - '0');
+	(*i)--;
 }

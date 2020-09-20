@@ -6,7 +6,7 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:53:05 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 18:49:28 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/18 19:48:43 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 int ft_print(int start, int end, char c)
 {
-	int i;
+	int print;
 
-	i = start;
+	print = 0;
 	while (start - end > 0)
 	{
 		ft_printchar(c);
 		start--;
+		print++;
 	}
-	return (i - end);
+	return (print);
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 16:22:28 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 18:56:52 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/19 20:14:48 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,13 @@ int ft_print_address_dot(unsigned long nbr, t_flags flags)
 	int print;
 
 	print = ft_printstr("0x", 2);
-	print += ft_print(flags.dot, ft_len_mem(nbr), '0');
-	print += ft_printaddr(nbr);
+	if (flags.dot >= 0)
+	{
+		print += ft_print(flags.dot, ft_len_mem(nbr), '0');
+		print += ft_printaddr(nbr);
+	}
+	else
+		print += ft_printaddr(nbr);
 	return (print);
 }
 
@@ -48,7 +53,7 @@ int ft_print_address(unsigned long nbr, t_flags flags)
 		print += ft_print_address_dot(nbr, flags);
 	if (flags.zero == '0' && flags.dot == -1)
 		flags.dot = flags.width;
-	print += ft_print(flags.width, (flags.dot + 2), ' ');
+	print += ft_print(flags.width, ft_len_mem(nbr) + 2, ' ');
 	if (flags.less == 0)
 		print += ft_print_address_dot(nbr, flags);
 	return (print);

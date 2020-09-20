@@ -6,7 +6,7 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 15:19:42 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 19:01:01 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/19 20:11:59 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,29 @@ int ft_printstr(char *str, int max)
 int ft_printhex(unsigned int nb, char value)
 {
 	char s[8];
-	char *hex;
 	int i;
 	int print;
 
 	i = 0;
-	if (value == 'X')
-		hex = "0123456789ABCDEF";
-	else
-		hex = "0123456789abcdef";
+	if (nb == 0)
+		s[i++] = '0';
 	while (nb)
 	{
-		s[i] = (nb % 16);
+		if ((nb % 16) < 10)
+			s[i] = (nb % 16) + '0';
+		else
+		{
+			if (value == 'x')
+				s[i] = (nb % 16) + 87;
+			else
+				s[i] = (nb % 16) + 55;
+		}
 		nb /= 16;
 		i++;
 	}
 	print = i;
 	while (--i >= 0)
-		ft_printchar(hex[s[i] + 48]);
+		ft_printchar(s[i]);
 	return (print);
 }
 
@@ -63,6 +68,8 @@ int	ft_printaddr(unsigned long addr_l)
 	int print;
 
 	i = 0;
+	if (addr_l == 0)
+		aff[i++] = '0';
 	while (addr_l)
 	{
 		if ((addr_l % 16) < 10)

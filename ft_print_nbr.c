@@ -6,7 +6,7 @@
 /*   By: mbeaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 23:18:04 by mbeaujar          #+#    #+#             */
-/*   Updated: 2020/09/18 18:59:47 by mbeaujar         ###   ########.fr       */
+/*   Updated: 2020/09/20 18:06:56 by mbeaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,15 @@ unsigned int ft_treat_nbr(long long nb, int *print, t_flags *flags, int *sign)
 {
 	unsigned int nbr;
 
-	if (nb < 0 && (flags->dot >= 0 || flags->zero == 1))
+	if (nb < 0 /*&& (flags->dot >= 0 || flags->zero == '0')*/)
 	{
 		*sign = 1;
-		if (flags->zero == 1 && flags->dot == -1)
+		if (flags->zero == '0' && flags->dot == -1)
 		{
 			ft_printchar('-');
 			*sign = 0;
 		}
 		nbr = -nb;
-		flags->zero = 1;
 		flags->width--;
 		(*print)++;
 	}
@@ -34,22 +33,24 @@ unsigned int ft_treat_nbr(long long nb, int *print, t_flags *flags, int *sign)
 	return (nbr);
 }
 
+
+void ft_putnbr(unsigned int nbr)
+{
+	if (nbr >= 10)
+	{
+		ft_putnbr(nbr / 10);
+		ft_putnbr(nbr % 10);
+	}
+	else
+		ft_printchar(nbr + '0');
+}
+
 int ft_printnbr(unsigned int nbr)
 {
-	char s[10];
 	int print;
-	int i;
 
-	i = 0;
-	while (nbr)
-	{
-		s[i] = (nbr % 10) - '0';
-		nbr /= 10;
-		i++;
-	}
-	print = i;
-	while (--i >= 0)
-		ft_printchar(s[i]);
+	print = ft_len_nbr(nbr);
+	ft_putnbr(nbr);
 	return (print);
 }
 
@@ -96,6 +97,6 @@ int ft_print_nbr(long long nb, t_flags flags)
 	if (flags.dot == 0 &&  nb == 0)
 		return (ft_print(flags.width, 0, ' '));
 	nbr = ft_treat_nbr(nb, &print, &flags, &sign);
-	print = ft_print_nbr_width(nbr, flags, sign);
+	print += ft_print_nbr_width(nbr, flags, sign);
 	return (print);
 }
